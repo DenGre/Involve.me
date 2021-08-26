@@ -2,6 +2,8 @@ package Tests;
 
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.account.loginPage;
@@ -19,6 +21,7 @@ public class WorkspaceTest extends BaseTest {
 
     @Test(description="New workspace")
     @Description("Creating a new workspace")
+    @Severity(SeverityLevel.BLOCKER)
     public void tc01_login() {
         mainPage mp = new mainPage(driver);
         mp.login();
@@ -35,6 +38,7 @@ public class WorkspaceTest extends BaseTest {
     @Test(description ="Adding team members" )
     @Description("Adding team members to the workspace. Since in this situation the user has not upgraded his account he will recieve an error, so for the purpose\" +\n" +
             "            of the test it will be done with the error message and will present that in other situation the member will be added.")
+    @Severity(SeverityLevel.NORMAL)
     public void tc02_addingTeamMembers() {
         ProjectsPage pr = new ProjectsPage(driver);
         pr.addTeamMembers(emailMember);
@@ -45,6 +49,7 @@ public class WorkspaceTest extends BaseTest {
 
     @Test(description = "renaming workspace name")
     @Description("Renaming the new workspace")
+    @Severity(SeverityLevel.NORMAL)
     public void tc03_remainingworkspace() {
         ProjectsPage pr = new ProjectsPage(driver);
         pr.renameWorkSpace(newNameWorkspace);
@@ -55,6 +60,7 @@ public class WorkspaceTest extends BaseTest {
 
     @Test(description = "Deleting workspace")
     @Description("Deleting the created workspace")
+    @Severity(SeverityLevel.NORMAL)
     public void tc04_deletingWorkspace() {
         ProjectsPage pr = new ProjectsPage(driver);
         pr.searchForWorkspace(newNameWorkspace);
@@ -66,6 +72,7 @@ public class WorkspaceTest extends BaseTest {
 
     @Test(description = "Search for project")
     @Description("Search for a specific project")
+    @Severity(SeverityLevel.NORMAL)
     public void tc05_searching4WorkSpace() {
         ProjectsPage pr = new ProjectsPage(driver);
         pr.searchForWorkspace(newNameWorkspace);
@@ -74,6 +81,7 @@ public class WorkspaceTest extends BaseTest {
 
     @Test(description = "Deleting project")
     @Description("Deleting a project from a workspace")
+    @Severity(SeverityLevel.NORMAL)
     public void tc06_deletingProjectFromExistWorkSpace() {
         ProjectsPage pr = new ProjectsPage(driver);
         pr.searchForWorkspace("111");
@@ -85,6 +93,7 @@ public class WorkspaceTest extends BaseTest {
 
     @Test(description = "Searching for project")
     @Description("Searching for non existent project")
+    @Severity(SeverityLevel.MINOR)
     public void tc07_searching4NonExistenProject() {
         ProjectsPage pr = new ProjectsPage(driver);
         pr.searchPrjct("1122");

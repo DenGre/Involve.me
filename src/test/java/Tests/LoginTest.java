@@ -2,7 +2,8 @@ package Tests;
 
 
 import io.qameta.allure.Description;
-import io.qameta.allure.Step;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.account.loginPage;
@@ -13,6 +14,7 @@ public class LoginTest extends BaseTest {
 
     @Test(description = "Logging in")
     @Description("Log in with a valid username and a valid password")
+    @Severity(SeverityLevel.BLOCKER)
     public void tc01_login() {
         mainPage mp = new mainPage(driver);
         mp.login();
@@ -28,6 +30,7 @@ public class LoginTest extends BaseTest {
 
     @Test(description = "Invalid log in")
     @Description("Error handling - Logging in with non valid password")
+    @Severity(SeverityLevel.NORMAL)
     public void tc02_EH_nonvalidPassword() {
         loginPage lp = new loginPage(driver);
         lp.logIn(email, "123456789A");

@@ -1,6 +1,8 @@
 package Tests;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.account.loginPage;
@@ -15,6 +17,7 @@ public class TemplatesTest extends BaseTest {
 
     @Test
     @Description("Testing the quantity of the templates in All category")
+    @Severity(SeverityLevel.MINOR)
     public void tc01_allTestNum() {
         mainPage mp = new mainPage(driver);
         mp.login();
@@ -30,6 +33,7 @@ public class TemplatesTest extends BaseTest {
 
     @Test
     @Description("Testing the quantity of the templates in quiz category")
+    @Severity(SeverityLevel.MINOR)
     public void tc02_quizTestNum() {
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickQuiz();
@@ -40,6 +44,7 @@ public class TemplatesTest extends BaseTest {
 
     @Test
     @Description("Testing the quantity of the templates in survey category")
+    @Severity(SeverityLevel.MINOR)
     public void tc03_surveyTestNum() {
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickSurvey();
@@ -48,6 +53,7 @@ public class TemplatesTest extends BaseTest {
 
     @Test
     @Description("Testing the quantity of the templates in calculator category")
+    @Severity(SeverityLevel.MINOR)
     public void tc04_calculatorTestNum() {
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickCalculator();
@@ -56,6 +62,7 @@ public class TemplatesTest extends BaseTest {
 
     @Test
     @Description("Testing the quantity of the templates in form category")
+    @Severity(SeverityLevel.MINOR)
     public void tc05_formTestNum() {
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickForm();
@@ -64,6 +71,7 @@ public class TemplatesTest extends BaseTest {
 
     @Test
     @Description("Testing the quantity of the templates in payment form category")
+    @Severity(SeverityLevel.MINOR)
     public void tc06_paymentFormTestNum() {
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickPaymentForm();
@@ -72,6 +80,7 @@ public class TemplatesTest extends BaseTest {
 
     @Test
     @Description("Testing the quantity of the templates in lead page category")
+    @Severity(SeverityLevel.MINOR)
     public void tc07_leadPageTestNum() {
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickLeadPage();
@@ -80,6 +89,7 @@ public class TemplatesTest extends BaseTest {
 
     @Test
     @Description("Testing the quantity of the templates in promotion category")
+    @Severity(SeverityLevel.MINOR)
     public void tc08_promotionTestNum() {
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickPromotion();
@@ -88,6 +98,7 @@ public class TemplatesTest extends BaseTest {
 
     @Test
     @Description("Testing the quantity of the templates in personality category")
+    @Severity(SeverityLevel.MINOR)
     public void tc09_personalityTestNum() {
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickPersonalityTest();
@@ -99,6 +110,7 @@ public class TemplatesTest extends BaseTest {
 
     @Test
     @Description("choosing the template from the list ")
+    @Severity(SeverityLevel.CRITICAL)
     public void tc10_chooseATemplate(){
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickAll();

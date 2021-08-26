@@ -1,6 +1,8 @@
 package Tests;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.account.forgotPasswordPage;
@@ -26,6 +28,7 @@ public class ForgotPasswordTest extends BaseTest {
 
     @Test(description = "recovering email that not in the database")
     @Description("Error handling - recovering an email which is not in the database")
+    @Severity(SeverityLevel.MINOR)
     public void tc02_recoveringNonExistEmail() {
         forgotPasswordPage fp = new forgotPasswordPage(driver);
         fp.resetPassword("1@gmail.com");
