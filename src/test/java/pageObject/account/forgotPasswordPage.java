@@ -1,5 +1,6 @@
 package pageObject.account;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,18 +21,20 @@ public class forgotPasswordPage extends basePage {
         super(driver);
     }
 
-    /* reseting the password for desired email */
+    @Step("Reseting the password for desired email {email}")
     public void resetPassword(String email) {
         fillText(emailField, email);
         click(resetLink);
     }
 
     /* Error message while recovering email that not in the data base */
+    @Step("Get failure message")
     public String getErrorMsg() {
         return getText(errormsg);
     }
 
     /* Confirmation that email with instructions to reset or change the password sent to the email */
+
     public String successMsg() {
         return getText(emailSentConfirmation);
     }

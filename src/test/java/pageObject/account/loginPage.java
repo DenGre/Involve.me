@@ -1,5 +1,6 @@
 package pageObject.account;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,6 +30,7 @@ public class loginPage extends basePage {
     }
 
     /* Login */
+    @Step("Logging in with email {email} and password {password}")
     public void logIn(String email, String password) {
         fillText(emailField, email);
         fillText(passwordField, password);
@@ -36,6 +38,7 @@ public class loginPage extends basePage {
     }
 
     /* Error message while entering wrong email and password */
+    @Step("Get error message")
     public String errorMessage() {
         return getText(errorMessage);
     }

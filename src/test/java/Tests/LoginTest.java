@@ -2,6 +2,7 @@ package Tests;
 
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.account.loginPage;

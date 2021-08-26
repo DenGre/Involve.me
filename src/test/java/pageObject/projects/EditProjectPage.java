@@ -1,5 +1,6 @@
 package pageObject.projects;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,7 +27,7 @@ public class EditProjectPage extends basePage {
     private WebElement savePageTitleNewName;
     @FindBy(css = ".new-project-modal")
     private WebElement newProjectPopUp;
-    @FindBy(css="#project-name-error")
+    @FindBy(css = "#project-name-error")
     private WebElement projectNameErrorMsg;
 
     @FindBy(css = "div.content-menu-item")
@@ -39,18 +40,18 @@ public class EditProjectPage extends basePage {
     private WebElement confrimDeleteBtn;
     @FindBy(css = ".swal-button--cancel")
     private WebElement canceDltBtn;
-    @FindBy(css=".e-close.nav-link")
+    @FindBy(css = ".e-close.nav-link")
     private WebElement saveAndExitBtn;
-    @FindBy(css="div.add-page-container")
+    @FindBy(css = "div.add-page-container")
     private WebElement addPageContainer;
     //page edit
-    @FindBy(css="[title='Duplicate page']")
+    @FindBy(css = "[title='Duplicate page']")
     private WebElement duplicatePageBtn;
-    @FindBy(css="[title='Page properties']")
+    @FindBy(css = "[title='Page properties']")
     private WebElement pagePropertiesBtn;
-    @FindBy(css="#project-title")
+    @FindBy(css = "#project-title")
     private WebElement projecTitleField;
-    @FindBy(css=".content-item-edit-container > div > h2")
+    @FindBy(css = ".content-item-edit-container > div > h2")
     private WebElement contentItemTitle;
     @FindBy(css = ".e-page-item.current .add-page-container button")
     private WebElement addNewSlideBtn;
@@ -58,11 +59,11 @@ public class EditProjectPage extends basePage {
     private List<WebElement> slidesList;
     @FindBy(css = "[title='Delete page']")
     private List<WebElement> deleteSlideBtns;
-    @FindBy(css=".swal-button--confirm.swal-button--danger")
+    @FindBy(css = ".swal-button--confirm.swal-button--danger")
     private WebElement confirmDeleteSlideBtn;
 
     //TopBar
-    @FindBy(css=".project-name")
+    @FindBy(css = ".project-name")
     private WebElement projectName;
 
 
@@ -75,6 +76,7 @@ public class EditProjectPage extends basePage {
         return getText(projectNameField);
     }
 
+    @Step("Choosing an option from the prep window with the name {projectName} and type {projectType")
     public void editProjectPrep(String projectName, String projectType) {
         fillText(projectNameField, projectName);
         switch (projectType) {
@@ -94,6 +96,7 @@ public class EditProjectPage extends basePage {
 
     }
 
+    @Step("Adding element to the project - {element}")
     public void addElementToProject(String element) {
         int counter = 0;
         for (WebElement content : contentList) {
@@ -113,34 +116,42 @@ public class EditProjectPage extends basePage {
         confirmDeleteItem();
 
     }
-    public void confirmDeleteItem(){
+
+    public void confirmDeleteItem() {
         click(confrimDeleteBtn);
     }
-    public void changePropertiesPage(String title){
+
+    public void changePropertiesPage(String title) {
         click(pagePropertiesBtn);
         fillText(projecTitleField, "Hello");
         click(savePageTitleNewName);
     }
-    public String getProjectTitle(){
+
+    public String getProjectTitle() {
         wait.until(ExpectedConditions.visibilityOf(projectName));
         return getText(projectName);
     }
-    public boolean isNewProjectPrepWindowDisplayeed(){
+
+    public boolean isNewProjectPrepWindowDisplayeed() {
         return isElementDisplayed(newProjectPopUp);
     }
+
     // returns the error message that is related to a new project's name
     public String getProjectNameErrorMsg() {
         return getText(projectNameErrorMsg);
     }
-    public String getProjectItemTitle(){
+
+    public String getProjectItemTitle() {
         return getText(contentItemTitle);
     }
+
     public int getSlidesNumber() {
         sleep(2);
         List<WebElement> slides = slidesList;
         return slides.size();
     }
-    public void addSlide(){
+
+    public void addSlide() {
         click(addNewSlideBtn);
     }
 

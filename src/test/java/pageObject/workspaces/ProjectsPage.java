@@ -1,5 +1,6 @@
 package pageObject.workspaces;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -113,6 +114,7 @@ public class ProjectsPage extends basePage {
     }
 
     /* Adding team members to the workspace. */
+    @Step("Adding team members with the email {emailMember")
     public void addTeamMembers(String emailMember) {
         driver.navigate().refresh();
         wait.until(ExpectedConditions.elementToBeClickable(addTeamMembrsBtn));
@@ -146,6 +148,7 @@ public class ProjectsPage extends basePage {
     }
 
     /* Renaming workspace */
+    @Step("Renaming the workspace to {text}")
     public void renameWorkSpace(String text) {
         refreshPage();
         click(workspaceEditBtn);
@@ -160,6 +163,7 @@ public class ProjectsPage extends basePage {
     }
 
     /* Search for project */
+    @Step("Search for project {text}")
     public void searchPrjct(String text) {
         click(searchBtn);
         fillText(searchField, text);
@@ -171,6 +175,7 @@ public class ProjectsPage extends basePage {
     }
 
     /* Choosing a specific workspace */
+    @Step("Choosing a workspace - {workspaceName}")
     public void searchForWorkspace(String workspaceName) {
         refreshPage();
         for (WebElement workspace : listOfTheWorkspaces
@@ -183,7 +188,7 @@ public class ProjectsPage extends basePage {
     }
 
     /*Deleting the chosen workspace */
-
+    @Step("Deleting workspace - {name}")
     public void deleteWorkspace(String name) {
         for (WebElement workspace :
                 listOfTheWorkspaces) {
@@ -195,6 +200,7 @@ public class ProjectsPage extends basePage {
     }
 
     /* Selecting from the tabs - all, draft, publiched etc. templates of the chosen project */
+    @Step("Selecting the tab {tabName}")
     public void selectTab(String tabName) {
         for (WebElement tab : tabs) {
             if (getText(tab).contains(tabName)) {
@@ -223,6 +229,7 @@ public class ProjectsPage extends basePage {
     }
 
     /* Deleting project */
+    @Step("deleting project - {projectName")
     public void deleteProject(String projectName) {
         List<WebElement> projects = projectsBlocks;
         for (WebElement project : projects) {

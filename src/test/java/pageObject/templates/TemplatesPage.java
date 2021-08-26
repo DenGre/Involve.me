@@ -1,5 +1,6 @@
 package pageObject.templates;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -98,6 +99,7 @@ public class TemplatesPage extends basePage {
     }
 
     /* Choosing the chosen template */
+    @Step("Choosing a template from the list with the name - {templateName")
     public void chooseTemplate(String templateName) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#template-gallery")));
         List<WebElement> templates = templatesBlocks;
@@ -112,8 +114,8 @@ public class TemplatesPage extends basePage {
         }
     }
 
-    /* Previewing the chose template */
-
+    /* Previewing the chosen template */
+    @Step("Previewing the chose template with the name = {templateName")
     public void previewTemplate(String templateName) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#template-gallery")));
         List<WebElement> templates = templatesBlocks;
@@ -128,6 +130,7 @@ public class TemplatesPage extends basePage {
     }
 
     /* Counting the templates items inside the chosen category */
+    @Step("Returns the quantity of the templates in the category")
     public int getTemplatesCount() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#template-gallery")));
         return templatesBlocks.size();

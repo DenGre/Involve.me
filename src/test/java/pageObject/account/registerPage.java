@@ -1,5 +1,6 @@
 package pageObject.account;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -45,6 +46,7 @@ public class registerPage extends basePage {
     }
 
     /* Registering an account */
+    @Step("Registering the account with name {name}, organization {organization},email {email},password {password}")
     public void registerAccount(String name, String organization, String email, String password) {
         fillText(nameField, name);
         fillText(organizationField, organization);
@@ -59,6 +61,7 @@ public class registerPage extends basePage {
     }
 
     /* Error message while registering without email and/or password */
+    @Step("Get failure message ")
     public String errorMSG() {
         return getText(emptyNameField);
     }
@@ -68,26 +71,30 @@ public class registerPage extends basePage {
     }
 
     /* Non valid email */
+    @Step("Get failure message ")
     public String errorEmail() {
         return getText(emailError);
 
     }
-
+    @Step("Get failure message - does not meet the requirements  ")
     /* Password that does not fit the requirements */
     public String passwordError() {
         return getText(noPasswordError);
     }
 
+    @Step("Get failure message - does not meet the requirements  ")
     /* Name error - do not fit the requirements */
     public String noNameError() {
         return getText(emptyNameField);
     }
 
+    @Step("Get failure message - does not meet the requirements ")
     /* Error with organization name */
     public String orgNameError() {
         return getText(orgNameError);
     }
 
+    @Step("Get failure message - accept the terms  ")
     /* Terms not accepted */
     public String termsError() {
         return getText(termsError);

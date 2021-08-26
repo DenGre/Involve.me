@@ -1,5 +1,6 @@
 package pageObject.mainPage;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,6 +35,7 @@ public class mainPage extends basePage {
     }
 
     /* Quick register from the mainpage */
+    @Step("Quick register from the main page with text {text}")
     public void getStartedFreeTop(String text) {
         topGetStartedFreeField.sendKeys(text);
         topGetStartedBtn.click();
