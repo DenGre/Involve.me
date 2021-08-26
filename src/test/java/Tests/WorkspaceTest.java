@@ -1,6 +1,7 @@
 package Tests;
 
 
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.account.loginPage;
@@ -16,7 +17,8 @@ public class WorkspaceTest extends BaseTest {
     String notFoundProject = "No project matches the criteria";
 
 
-    @Test(description="Creating a workspace")
+    @Test(description="New workspace")
+    @Description("Creating a new workspace")
     public void tc01_login() {
         mainPage mp = new mainPage(driver);
         mp.login();
@@ -30,8 +32,9 @@ public class WorkspaceTest extends BaseTest {
 
     }
 
-    @Test(description = "Adding team members to the workspace. Since in this situation the user has not upgraded his account he will recieve an error, so for the purpose" +
-            "of the test it will be done with the error message and will present that in other situation the member will be added.")
+    @Test(description ="Adding team members" )
+    @Description("Adding team members to the workspace. Since in this situation the user has not upgraded his account he will recieve an error, so for the purpose\" +\n" +
+            "            of the test it will be done with the error message and will present that in other situation the member will be added.")
     public void tc02_addingTeamMembers() {
         ProjectsPage pr = new ProjectsPage(driver);
         pr.addTeamMembers(emailMember);
@@ -41,6 +44,7 @@ public class WorkspaceTest extends BaseTest {
     }
 
     @Test(description = "renaming workspace name")
+    @Description("Renaming the new workspace")
     public void tc03_remainingworkspace() {
         ProjectsPage pr = new ProjectsPage(driver);
         pr.renameWorkSpace(newNameWorkspace);
@@ -50,6 +54,7 @@ public class WorkspaceTest extends BaseTest {
     }
 
     @Test(description = "Deleting workspace")
+    @Description("Deleting the created workspace")
     public void tc04_deletingWorkspace() {
         ProjectsPage pr = new ProjectsPage(driver);
         pr.searchForWorkspace(newNameWorkspace);
@@ -59,14 +64,16 @@ public class WorkspaceTest extends BaseTest {
         Assert.assertEquals(after, before);
     }
 
-    @Test(description = "Search for created project")
+    @Test(description = "Search for project")
+    @Description("Search for a specific project")
     public void tc05_searching4WorkSpace() {
         ProjectsPage pr = new ProjectsPage(driver);
         pr.searchForWorkspace(newNameWorkspace);
         Assert.assertEquals(pr.getWorkspaceTitle(), newNameWorkspace);
     }
 
-    @Test(description = "Deleting project from an existing Workspace")
+    @Test(description = "Deleting project")
+    @Description("Deleting a project from a workspace")
     public void tc06_deletingProjectFromExistWorkSpace() {
         ProjectsPage pr = new ProjectsPage(driver);
         pr.searchForWorkspace("111");
@@ -76,7 +83,8 @@ public class WorkspaceTest extends BaseTest {
         Assert.assertEquals(before, after + 1);
     }
 
-    @Test(description = "Searching for non existent project")
+    @Test(description = "Searching for project")
+    @Description("Searching for non existent project")
     public void tc07_searching4NonExistenProject() {
         ProjectsPage pr = new ProjectsPage(driver);
         pr.searchPrjct("1122");
