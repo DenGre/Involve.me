@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="/Users/dennishryhroryev/eclipse-workspace1/Involve.me">
+        <classes>
+            <class name="Tests.RegisterTest">
+                <methods>
+                    <include name="tc01_creatingNewAccount"/>
+                    <include name="tc02_creatingAccountWithoutEmail"/>
+                    <include name="tc03_accountWithoutPassword"/>
+                    <include name="tc04_accountWithoutName"/>
+                    <include name="tc05_accountWithoutOrgName"/>
+                    <include name="tc06_EH_shortPassword"/>
+                    <include name="tc07_EH_specialReq"/>
+                    <include name="tc08_EH_noTermsAccepted"/>
+                </methods>
+            </class>
+            <class name="Tests.ForgotPasswordTest">
+                <methods>
+                    <include name="tc01"/>
+                    <include name="tc02"/>
+                </methods>
+            </class>
+            <class name="Tests.LoginTest">
+                <methods>
+                    <include name="tc01_login"/>
+                    <include name="tc02_EH_nonvalidPassword"/>
+                </methods>
+            </class>
+            <class name="Tests.WorkspaceTest">
+                <methods>
+                    <include name="tc01_login"/>
+                    <include name="tc02_addingTeamMembers"/>
+                    <include name="tc03_remainingworkspace"/>
+                    <include name="tc04_deletingWorkspace"/>
+                    <include name="tc05_searching4WorkSpace"/>
+                    <include name="tc06_deletingProjectFromExistWorkSpace"/>
+                    <include name="tc07_searching4NonExistenProject"/>
+                </methods>
+            </class>
+            <class name="Tests.TemplatesTest">
+                <methods>
+                    <include name="tc01_allTestNum"/>
+                    <include name="tc02_quizTestNum"/>
+                    <include name="tc03_surveyTestNum"/>
+                    <include name="tc04_calculatorTestNum"/>
+                    <include name="tc05_formTestNum"/>
+                    <include name="tc06_paymentFormTestNum"/>
+                    <include name="tc07_leadPageTestNum"/>
+                    <include name="tc08_promotionTestNum"/>
+                    <include name="tc09_personalityTestNum"/>
+                    <include name="tc10_chooseATemplate"/>
+                </methods>
+            </class>
+            <class name="Tests.EditProjectTest">
+                <methods>
+                    <include name="tc01_login"/>
+                    <include name="tc02_isPrepWindowPopped"/>
+                    <include name="tc03_creatingProjectWithoutATitle"/>
+                    <include name="tc04_creatingProjectWithShortTitle"/>
+                    <include name="tc05_creatingProject"/>
+                    <include name="tc06_addingItemToTheProject"/>
+                    <include name="tc07_addingSlideToTheProject"/>
+                    <include name="tc08_deletingTheLastSlide"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
