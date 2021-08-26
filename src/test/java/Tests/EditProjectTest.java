@@ -16,7 +16,7 @@ public class EditProjectTest extends BaseTest {
     String projectType = "thank you page";
     String projectItemName = "Rating";
 
-    @Test
+    @Test(description = "Logging in")
     public void tc01_login() {
         mainPage mp = new mainPage(driver);
         mp.login();
@@ -26,7 +26,7 @@ public class EditProjectTest extends BaseTest {
         Assert.assertEquals("Workspaces", pp.getTitle());
     }
 
-    @Test
+    @Test(description = "Verifying the prep window is opened")
     public void tc02_isPrepWindowPopped() {
         topBarEditor tb = new topBarEditor(driver);
         tb.clickOnTemplates();
@@ -37,14 +37,14 @@ public class EditProjectTest extends BaseTest {
         Assert.assertTrue(epp.isNewProjectPrepWindowDisplayeed());
     }
 
-    @Test
+    @Test(description = "Error Handling - creagin a project without a title")
     public void tc03_creatingProjectWithoutATitle() {
         EditProjectPage epp = new EditProjectPage(driver);
         epp.editProjectPrep("", projectType);
         Assert.assertEquals(epp.getProjectNameErrorMsg(), "This field is required.");
     }
 
-    @Test
+    @Test(description = "Error Handling - creating a project with a short title")
     public void tc04_creatingProjectWithShortTitle() {
         EditProjectPage epp = new EditProjectPage(driver);
         epp.editProjectPrep("1", projectType);
@@ -58,21 +58,21 @@ public class EditProjectTest extends BaseTest {
     One way - is just press Enter.
     Second way - is refresh the page.
      */
-    @Test
+    @Test(description = "creating a project")
     public void tc05_creatingProject() {
         EditProjectPage epp = new EditProjectPage(driver);
         epp.editProjectPrep("test", projectType);
         Assert.assertEquals(epp.getProjectTitle(), "TEST");
     }
 
-    @Test
+    @Test(description = "adding and item from the list to the project")
     public void tc06_addingItemToTheProject() {
         EditProjectPage epp = new EditProjectPage(driver);
         epp.addElementToProject(projectItemName);
         Assert.assertEquals(epp.getProjectItemTitle(), projectItemName);
     }
 
-    @Test
+    @Test(description = "adding slides to the project at the bottom")
     public void tc07_addingSlideToTheProject() {
         EditProjectPage epp = new EditProjectPage(driver);
         int before = epp.getSlidesNumber();
@@ -81,7 +81,7 @@ public class EditProjectTest extends BaseTest {
         Assert.assertEquals(before + 1, after);
     }
 
-    @Test
+    @Test(description = "deleting the last slide")
     public void tc08_deletingTheLastSlide() {
         EditProjectPage epp = new EditProjectPage(driver);
         int before = epp.getSlidesNumber();
