@@ -2,6 +2,7 @@ package Tests;
 
 
 
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.account.registerPage;
@@ -10,7 +11,8 @@ import pageObject.mainPage.mainPage;
 public class RegisterTest extends BaseTest {
 
 
-    @Test(description = "Creating new Account")
+    @Test(description = "New Account")
+    @Description("Creating new account")
     public void tc01_creatingNewAccount() {
         mainPage mp = new mainPage(driver);
         mp.register();
@@ -18,7 +20,8 @@ public class RegisterTest extends BaseTest {
         rp.registerAccount("Dennis", "Branded", "@gmail.com", "Anna123456");
     }
 
-    @Test(description = "creating account without email")
+    @Test(description = "Without email")
+    @Description("Creating an account without an email")
     public void tc02_creatingAccountWithoutEmail() {
         registerPage rp = new registerPage(driver);
         rp.registerAccount("Dennis", "Branded", "", "Anna123456");
@@ -27,7 +30,8 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(description = "creating account without password")
+    @Test(description = "Without password")
+    @Description("Creating account without entering a password")
     public void tc03_accountWithoutPassword() {
         registerPage rp = new registerPage(driver);
         rp.registerAccount("Dennis", "Branded", "dennis@gmail.com", "");
@@ -36,7 +40,8 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(description = "creating account without name")
+    @Test(description = "Without name")
+    @Description("Creating accont without a name")
     public void tc04_accountWithoutName() {
         registerPage rp = new registerPage(driver);
         rp.registerAccount("", "Branded", "dennis@gmail.com", "");
@@ -45,7 +50,8 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(description = "creating account without organization name")
+    @Test(description = "Without organization name")
+    @Description("Creating account with no organization name")
     public void tc05_accountWithoutOrgName() {
         registerPage rp = new registerPage(driver);
         rp.registerAccount("Dennis", "", "dennis@gmail.com", "");
@@ -54,7 +60,8 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(description = "creating account - short password")
+    @Test(description = "Short password")
+    @Description("Creating an account with short passoword")
     public void tc06_EH_shortPassword() {
         registerPage rp = new registerPage(driver);
         rp.registerAccount("Dennis", "Br", "dennis@gmail.com", "1");
@@ -63,7 +70,8 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(description = "creating account - special requirements")
+    @Test(description = "Special requirements")
+    @Description("Error handling - creating an account with password that does not match the requirements")
     public void tc07_EH_specialReq() {
         registerPage rp = new registerPage(driver);
         rp.registerAccount("Dennis", "Br", "dennis@gmail.com", "1234567890");
@@ -72,7 +80,8 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(description = "creating account - no terms accepted")
+    @Test(description = "No terms accepted")
+    @Description("Not accepting the terms after filling out the wright info")
     public void tc08_EH_noTermsAccepted() {
         registerPage rp = new registerPage(driver);
         rp.registerAccount("Dennis", "Br", "dennis@gmail.com", "1234567890");

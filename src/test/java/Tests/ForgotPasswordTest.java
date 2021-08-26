@@ -1,5 +1,6 @@
 package Tests;
 
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.account.forgotPasswordPage;
@@ -10,7 +11,8 @@ public class ForgotPasswordTest extends BaseTest {
 
 
     @Test(description = "recovering accounts password")
-    public void tc01() {
+    @Description("Recovering account trough the link")
+    public void tc01_recoveringAccount() {
         mainPage mp = new mainPage(driver);
         mp.login();
         loginPage lp = new loginPage(driver);
@@ -23,7 +25,8 @@ public class ForgotPasswordTest extends BaseTest {
     }
 
     @Test(description = "recovering email that not in the database")
-    public void tc02() {
+    @Description("Error handling - recovering an email which is not in the database")
+    public void tc02_recoveringNonExistEmail() {
         forgotPasswordPage fp = new forgotPasswordPage(driver);
         fp.resetPassword("1@gmail.com");
         String actual = "We can't find a user with that e-mail address.";
