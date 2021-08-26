@@ -80,7 +80,7 @@ public class WorkspaceTest extends BaseTest {
         int before = pr.getProjectsNumber();
         pr.deleteProject("New Project");
         int after = pr.getProjectsNumber();
-        Assert.assertEquals(before, after + 1);
+        Assert.assertEquals(before, after - 1);
     }
 
     @Test(description = "Searching for project")

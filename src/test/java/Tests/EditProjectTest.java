@@ -1,5 +1,6 @@
 package Tests;
 
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.account.loginPage;
@@ -17,6 +18,7 @@ public class EditProjectTest extends BaseTest {
     String projectItemName = "Rating";
 
     @Test(description = "Logging in")
+    @Description("Logging in with valid credentials - the project page should open")
     public void tc01_login() {
         mainPage mp = new mainPage(driver);
         mp.login();
@@ -26,7 +28,8 @@ public class EditProjectTest extends BaseTest {
         Assert.assertEquals("Workspaces", pp.getTitle());
     }
 
-    @Test(description = "Verifying the prep window is opened")
+    @Test(description = "Prep window of the project")
+    @Description("The prep window of the project opens up with 3 options")
     public void tc02_isPrepWindowPopped() {
         topBarEditor tb = new topBarEditor(driver);
         tb.clickOnTemplates();
@@ -37,20 +40,21 @@ public class EditProjectTest extends BaseTest {
         Assert.assertTrue(epp.isNewProjectPrepWindowDisplayeed());
     }
 
-    @Test(description = "Error Handling - creagin a project without a title")
+    @Test(description = "Project without a title")
+    @Description("Creating project without a title - expect to receive an error")
     public void tc03_creatingProjectWithoutATitle() {
         EditProjectPage epp = new EditProjectPage(driver);
         epp.editProjectPrep("", projectType);
         Assert.assertEquals(epp.getProjectNameErrorMsg(), "This field is required.");
     }
 
-    @Test(description = "Error Handling - creating a project with a short title")
+    @Test(description = "Project with a short title")
+    @Description("Creating a project with short title - expect to receive an error")
     public void tc04_creatingProjectWithShortTitle() {
         EditProjectPage epp = new EditProjectPage(driver);
         epp.editProjectPrep("1", projectType);
         Assert.assertEquals(epp.getProjectNameErrorMsg(), "Please enter at least 3 characters.");
         refreshPage();
-
     }
 
     /* Bug - After test 3 or 4 while the user entered not valid text and clicked on the Start Editing button,
@@ -59,20 +63,23 @@ public class EditProjectTest extends BaseTest {
     Second way - is refresh the page.
      */
     @Test(description = "creating a project")
+    @Description("Creating a project with the name 'test'")
     public void tc05_creatingProject() {
         EditProjectPage epp = new EditProjectPage(driver);
         epp.editProjectPrep("test", projectType);
         Assert.assertEquals(epp.getProjectTitle(), "TEST");
     }
 
-    @Test(description = "adding and item from the list to the project")
+    @Test(description = "Adding and item to the project")
+    @Description("Configuring the project while adding items/forms from the list at the right")
     public void tc06_addingItemToTheProject() {
         EditProjectPage epp = new EditProjectPage(driver);
         epp.addElementToProject(projectItemName);
         Assert.assertEquals(epp.getProjectItemTitle(), projectItemName);
     }
 
-    @Test(description = "adding slides to the project at the bottom")
+    @Test(description = "Adding slide")
+    @Description("Adding slide to the project - should add an additional slide")
     public void tc07_addingSlideToTheProject() {
         EditProjectPage epp = new EditProjectPage(driver);
         int before = epp.getSlidesNumber();
@@ -81,7 +88,8 @@ public class EditProjectTest extends BaseTest {
         Assert.assertEquals(before + 1, after);
     }
 
-    @Test(description = "deleting the last slide")
+    @Test(description = "deleting slide")
+    @Description("Deleting the last slide")
     public void tc08_deletingTheLastSlide() {
         EditProjectPage epp = new EditProjectPage(driver);
         int before = epp.getSlidesNumber();
