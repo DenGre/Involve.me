@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import pageObject.account.loginPage;
 import pageObject.mainPage.mainPage;
 import pageObject.projects.topBarEditor;
+import utils.AllureAttachment;
 
 public class LoginTest extends BaseTest {
 
@@ -37,6 +38,7 @@ public class LoginTest extends BaseTest {
         String actual = "These credentials do not match our records.";
         String expected = lp.errorMessage();
         Assert.assertEquals(actual, expected);
+        AllureAttachment.attachText("Test");
 
 
     }
