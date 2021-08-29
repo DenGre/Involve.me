@@ -6,6 +6,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -22,9 +23,10 @@ public class BaseTest {
 
     /* Setting up the chrome driver via WebDriveManage, so it will always be updated and not stored locally */
     @BeforeClass
-    public void setUp() {
+    public void setUp(ITestContext testContext) {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        testContext.setAttribute("WebDriver", this.driver);
         driver.manage().window().maximize();
         driver.get("https://www.involve.me");
 

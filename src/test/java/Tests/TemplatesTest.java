@@ -1,14 +1,18 @@
 package Tests;
 
+import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import org.apache.xmlbeans.impl.xb.xsdschema.All;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.account.loginPage;
 import pageObject.mainPage.mainPage;
 import pageObject.projects.topBarEditor;
 import pageObject.templates.TemplatesPage;
+import utils.AllureAttachment;
+import utils.ListenerJava;
 
 public class TemplatesTest extends BaseTest {
 
@@ -39,7 +43,7 @@ public class TemplatesTest extends BaseTest {
         tp.clickQuiz();
         int blocks = tp.getTemplatesCountDisplayed("quiz");
         int category = tp.getTemplatesCount();
-        Assert.assertTrue(blocks == category);
+        Assert.assertEquals(blocks,category);
     }
 
     @Test
@@ -48,7 +52,7 @@ public class TemplatesTest extends BaseTest {
     public void tc03_surveyTestNum() {
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickSurvey();
-        Assert.assertTrue(tp.getTemplatesCountDisplayed("survey") == tp.getTemplatesCount());
+        Assert.assertEquals(tp.getTemplatesCountDisplayed("survey"), tp.getTemplatesCount());
     }
 
     @Test
@@ -57,7 +61,7 @@ public class TemplatesTest extends BaseTest {
     public void tc04_calculatorTestNum() {
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickCalculator();
-        Assert.assertTrue(tp.getTemplatesCountDisplayed("calculator") == tp.getTemplatesCount());
+        Assert.assertEquals(tp.getTemplatesCountDisplayed("calculator"),tp.getTemplatesCount());
     }
 
     @Test
@@ -66,7 +70,8 @@ public class TemplatesTest extends BaseTest {
     public void tc05_formTestNum() {
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickForm();
-        Assert.assertTrue(tp.getTemplatesCountDisplayed("form") == tp.getTemplatesCount());
+        Assert.assertEquals(tp.getTemplatesCountDisplayed("form"),tp.getTemplatesCount());
+        AllureAttachment.attachScreenshot(driver);
     }
 
     @Test
@@ -75,7 +80,7 @@ public class TemplatesTest extends BaseTest {
     public void tc06_paymentFormTestNum() {
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickPaymentForm();
-        Assert.assertTrue(tp.getTemplatesCountDisplayed("payment form") == tp.getTemplatesCount());
+        Assert.assertEquals(tp.getTemplatesCountDisplayed("payment form"), tp.getTemplatesCount());
     }
 
     @Test
@@ -84,7 +89,7 @@ public class TemplatesTest extends BaseTest {
     public void tc07_leadPageTestNum() {
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickLeadPage();
-        Assert.assertTrue(tp.getTemplatesCountDisplayed("lead page") == tp.getTemplatesCount());
+        Assert.assertEquals(tp.getTemplatesCountDisplayed("lead page"),tp.getTemplatesCount());
     }
 
     @Test
@@ -93,7 +98,7 @@ public class TemplatesTest extends BaseTest {
     public void tc08_promotionTestNum() {
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickPromotion();
-        Assert.assertTrue(tp.getTemplatesCountDisplayed("promotion") == tp.getTemplatesCount());
+        Assert.assertEquals(tp.getTemplatesCountDisplayed("promotion"),tp.getTemplatesCount());
     }
 
     @Test
@@ -102,7 +107,7 @@ public class TemplatesTest extends BaseTest {
     public void tc09_personalityTestNum() {
         TemplatesPage tp = new TemplatesPage(driver);
         tp.clickPersonalityTest();
-        Assert.assertTrue(tp.getTemplatesCountDisplayed("personality test") == tp.getTemplatesCount());
+        Assert.assertEquals(tp.getTemplatesCountDisplayed("personality test"),tp.getTemplatesCount());
     }
 
 

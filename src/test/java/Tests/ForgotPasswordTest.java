@@ -12,7 +12,7 @@ import pageObject.mainPage.mainPage;
 public class ForgotPasswordTest extends BaseTest {
 
 
-    @Test(description = "recovering accounts password")
+    @Test(description = "Recovering accounts password")
     @Description("Recovering account trough the link")
     public void tc01_recoveringAccount() {
         mainPage mp = new mainPage(driver);
@@ -26,7 +26,7 @@ public class ForgotPasswordTest extends BaseTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(description = "recovering email that not in the database")
+    @Test(description ="Recovering email that not in the database")
     @Description("Error handling - recovering an email which is not in the database")
     @Severity(SeverityLevel.MINOR)
     public void tc02_recoveringNonExistEmail() {

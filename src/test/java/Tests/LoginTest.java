@@ -35,10 +35,8 @@ public class LoginTest extends BaseTest {
     @Test(description = "Invalid log in")
     @Description("Error handling - Logging in with non valid password")
     @Severity(SeverityLevel.NORMAL)
-    @Step
     public void tc02_EH_nonvalidPassword() {
         loginPage lp = new loginPage(driver);
-        AllureAttachment.attachText("Test");
         lp.logIn(email, "123456789A");
         String actual = "These credentials do not match our records.";
         String expected = lp.errorMessage();

@@ -1,6 +1,7 @@
 package pageObject.basePage;
 
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +26,7 @@ public class basePage {
     }
 
     // Clicking on the element
+    @Step("Clicking on element {el}")
     public void click(WebElement el) {
         highlightElement(el, "red");
         el.click();
@@ -32,6 +34,7 @@ public class basePage {
     }
 
     // Send keys or fill with text the field
+    @Step("Filling {el} with text - {text}")
     public void fillText(WebElement el, String text) {
         highlightElement(el, "yellow");
         el.clear();
@@ -39,6 +42,7 @@ public class basePage {
     }
 
     // sleeps for a specific time
+    @Step("The system hibernates for {i} seconds ")
     public void sleep(int i) {
         try {
             TimeUnit.SECONDS.sleep(i);
@@ -48,11 +52,13 @@ public class basePage {
     }
 
     // Get text - any text that is in the element will be parsed to a String
+    @Step("Returns the String/text of {el}")
     public String getText(WebElement el) {
         return el.getText();
     }
 
     //Highlight the element with the chosen color
+    @Step("Highlighting {element} with the color {color} ")
     private void highlightElement(WebElement element, String color) {
         // keep the old style to change it back
         String originalStyle = element.getAttribute("style");
@@ -69,23 +75,27 @@ public class basePage {
     }
 
     //Refreshing the page if needed
+
     public void refreshPage() {
         driver.navigate().refresh();
     }
 
     //Drag and drop elements
+    @Step("Dragging element {el} on  element {dropzone}")
     public void dragAndDrop(WebElement el, WebElement dropZone) {
         Actions actions = new Actions(driver);
         actions.dragAndDrop(el, dropZone).perform();
     }
 
     //Moving elements on other elements
+    @Step("Hovering over element {el}")
     public void moveToElement(WebElement el) {
         Actions actions = new Actions(driver);
         actions.moveToElement(el).perform();
     }
 
     //Returns true if the element is displayed
+    @Step("Returns that element {el} is displayed")
     public boolean isElementDisplayed(WebElement el) {
         try {
             return el.isDisplayed();
